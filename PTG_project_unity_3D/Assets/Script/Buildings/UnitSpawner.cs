@@ -15,7 +15,7 @@ public class UnitSpawner : NetworkBehaviour, IPointerClickHandler
     
     [SerializeField]
     [SyncVar]
-    public List<int> queue = new List<int>();
+    private List<int> queue = new List<int>();
     [SerializeField]
     [SyncVar]
     int unitType = 0;
@@ -29,26 +29,39 @@ public class UnitSpawner : NetworkBehaviour, IPointerClickHandler
 
         NetworkServer.Spawn(unitSpawn, connectionToClient);
     }
-
     [Command]
     public void CmdUnitType(int unitType)
     {
         this.unitType = unitType;
     }
-    //Nie korzystam bo jakos na 3D wtedy nie potrafi dodawac
-    [Command]
     public void AddToQueue(int unit)
     {
         queue.Add(unit);
     }
-    //Nie korzystam bo jakos na 3D wtedy nie potrafi usuwaC
-    [Command]
     public void RemoveFromQueue(int unit)
     {
         queue.Remove(unit);
 
     }
+    public bool IsQueued()
+    {
+        return queue.Count > 0;
+    }
 
+    public int GetFirst()
+    {
+        return queue.First();
+    }
+
+    public int GetCount()
+    {
+        return queue.Count;
+    }
+
+    public int GetUnit(int place)
+    {
+        return queue[place];
+    }
     #endregion
 
     #region Client
@@ -56,7 +69,7 @@ public class UnitSpawner : NetworkBehaviour, IPointerClickHandler
     {
         if (eventData.button != PointerEventData.InputButton.Left)
         {
-            unitCanvas.gameObject.SetActive(false);
+            
             return;
         }
 
@@ -64,7 +77,7 @@ public class UnitSpawner : NetworkBehaviour, IPointerClickHandler
         {
             return;
         }
-        unitCanvas.gameObject.SetActive(true);
+        unitCanvas.gameObject.SetActive(!unitCanvas.gameObject.activeSelf);
     }
 
 

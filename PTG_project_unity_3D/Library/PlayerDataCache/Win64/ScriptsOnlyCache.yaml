@@ -29,6 +29,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
   sceneClasses:
     Assets/Scenes/SampleScene.unity:
@@ -69,6 +70,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1464}
     - Class: 114
+      Script: {instanceID: 1718}
+    - Class: 114
       Script: {instanceID: 2206}
     - Class: 114
       Script: {instanceID: 2600}
@@ -77,25 +80,25 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2842}
     - Class: 114
-      Script: {instanceID: 3334}
+      Script: {instanceID: 3134}
     - Class: 114
-      Script: {instanceID: 3674}
+      Script: {instanceID: 3336}
     - Class: 114
-      Script: {instanceID: 4146}
+      Script: {instanceID: 3676}
     - Class: 114
-      Script: {instanceID: 4526}
+      Script: {instanceID: 3936}
     - Class: 114
-      Script: {instanceID: 4642}
+      Script: {instanceID: 4152}
     - Class: 114
-      Script: {instanceID: 5030}
+      Script: {instanceID: 4532}
     - Class: 114
-      Script: {instanceID: 5184}
+      Script: {instanceID: 4648}
     - Class: 114
-      Script: {instanceID: 17698}
+      Script: {instanceID: 4818}
     - Class: 114
-      Script: {instanceID: 17712}
+      Script: {instanceID: 5038}
     - Class: 114
-      Script: {instanceID: 17720}
+      Script: {instanceID: 5192}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -509,6 +512,12 @@ ScriptsOnlyBuild:
     className: CanvasController
   - hash:
       serializedVersion: 2
+      Hash: 257520b7d4cfe1de53061b551445bc62
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UnitSpawner
+  - hash:
+      serializedVersion: 2
       Hash: 3df4eaf55d1d5aa96d6bdb28cd9ae75f
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.Additive
@@ -743,6 +752,12 @@ ScriptsOnlyBuild:
     className: AnimationTrack
   - hash:
       serializedVersion: 2
+      Hash: a8d7831da36f4eb4d728e59986a9450b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: MyNetworkManager
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -951,6 +966,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_Settings
+  - hash:
+      serializedVersion: 2
+      Hash: 8cdea17d73c5ce2ae9439765414474ef
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UnitType
   - hash:
       serializedVersion: 2
       Hash: e1be6cb5fb432e26f64fcb687a018983
@@ -1173,25 +1194,7 @@ ScriptsOnlyBuild:
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.NetworkRoom
     className: NetworkRoomPlayerExt
-  - hash:
-      serializedVersion: 2
-      Hash: a8d7831da36f4eb4d728e59986a9450b
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: MyNetworkManager
-  - hash:
-      serializedVersion: 2
-      Hash: 257520b7d4cfe1de53061b551445bc62
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: UnitSpawner
-  - hash:
-      serializedVersion: 2
-      Hash: 6df172b364604c027017b0dabc107511
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: UnitType
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: D:/Unity project/PTG_project_unity_3D/Builds/KolejkowanieV_1/PTG_project_unity_3D.exe
+  playerPath: D:/Unity project/PTG_project_unity_3D/Builds/KolejkowanieV_4/PTG_project_unity_3D.exe

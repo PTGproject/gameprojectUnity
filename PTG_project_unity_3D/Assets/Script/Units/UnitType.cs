@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +9,17 @@ using UnityEngine.UI;
 
 public class UnitType : MonoBehaviour
 {
-    [SerializeField] private UnitSpawner unitSpawner = null;
-    private Coroutine trainingCoroutine;
+    [SerializeField] private UnitSpawner _unitSpawner = null;
+    [SerializeField] private List<Image> _queueList = null;
+    [SerializeField] private List<Sprite> _spritesList = null;
+    [SerializeField] private Slider _sliderBar = null;
+    [SerializeField] private Text _sliderBarText = null;
+   // [SerializeField] private Text time = null;
+    private float _unitTrainingPercent =0;
+    private Coroutine _trainingCoroutine;
+    private float _timeMil = 0;
 
-    private int uType = 0;
+    private int _uType = 0;
 
     // Start is called before the first frame update
 
@@ -24,28 +32,63 @@ public class UnitType : MonoBehaviour
     #region Client
     private void Start()
     {
-        gameObject.GetComponent<Button>().onClick
-            .AddListener(Choose );
-
+       
     }
-    
-    private void Choose()
+
+    private void Update()
+    {
+        int queueCount = _unitSpawner.GetCount();
+        for (int i = 0; i < _queueList.Count; i++)
+        {
+
+            _queueList[i].sprite = null;
+        }
+
+        for (int i = 0; i < queueCount; i++)
+        {
+            _queueList[i].sprite = _spritesList[_unitSpawner.GetUnit(i)];
+        }
+
+        if (_unitSpawner.IsQueued())
+        {
+            _timeMil += Time.deltaTime;
+            _unitTrainingPercent = _timeMil / (_unitSpawner.GetFirst() *2 + 2);
+            _sliderBar.value = _unitTrainingPercent;
+            _sliderBarText.text = Math.Round(_unitTrainingPercent * 100) + "%";
+            _sliderBar.gameObject.SetActive(true);
+           
+        }
+        else
+        {
+            _sliderBar.gameObject.SetActive(false);
+        }
+       
+       
+    }
+
+    public void Choose()
     {
 
         switch (EventSystem.current.currentSelectedGameObject.name)
         {
             case "Peasant":
-                uType = 0;
+                _uType = 0;
                 break;
             case "Archer":
-                uType = 1;
+                _uType = 1;
                 break;
             default:
                 Debug.Log("nic nie robie");
                 break;
         }
-        unitSpawner.queue.Add(uType);
-        trainingCoroutine ??= StartCoroutine(TrainingUnit());
+
+        if (_unitSpawner.GetCount() >= _queueList.Count)
+        {
+            Debug.Log("Kolejka pe³na");
+            return;
+        }
+        _unitSpawner.AddToQueue(_uType);
+        _trainingCoroutine ??= StartCoroutine(TrainingUnit());
 
 
     }
@@ -53,19 +96,21 @@ public class UnitType : MonoBehaviour
     private IEnumerator TrainingUnit()
     {
         Debug.Log("Poczatek");
-        while (unitSpawner.queue.Count > 0)
+        while (_unitSpawner.IsQueued())
         {
 
-            yield return new WaitForSeconds(unitSpawner.queue.First() * 2f + 2f);
-            if (unitSpawner.queue.Count > 0)
+            yield return new WaitForSeconds(_unitSpawner.GetFirst() * 2f + 2f);
+            if (_unitSpawner.IsQueued())
             {
-                unitSpawner.CmdUnitType(unitSpawner.queue.First());
-                unitSpawner.CmdSpawnUnit();
-                unitSpawner.queue.Remove(unitSpawner.queue.First());
+                _unitSpawner.CmdUnitType(_unitSpawner.GetFirst());
+                _unitSpawner.CmdSpawnUnit();
+                _unitSpawner.RemoveFromQueue(_unitSpawner.GetFirst());
+                _timeMil = 0;
+                _unitTrainingPercent = 0;
                 Debug.Log("Srodek");
             }
         }
-        trainingCoroutine = null;
+        _trainingCoroutine = null;
     }
 
     #endregion
