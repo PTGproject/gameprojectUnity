@@ -79,53 +79,53 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1454}
     - Class: 114
-      Script: {instanceID: 1464}
+      Script: {instanceID: 1466}
     - Class: 114
-      Script: {instanceID: 1718}
+      Script: {instanceID: 1720}
     - Class: 114
-      Script: {instanceID: 2206}
+      Script: {instanceID: 2132}
     - Class: 114
-      Script: {instanceID: 2274}
+      Script: {instanceID: 2214}
     - Class: 114
-      Script: {instanceID: 2602}
+      Script: {instanceID: 2282}
     - Class: 114
-      Script: {instanceID: 2756}
+      Script: {instanceID: 2610}
     - Class: 114
-      Script: {instanceID: 2844}
+      Script: {instanceID: 2764}
     - Class: 114
-      Script: {instanceID: 3022}
+      Script: {instanceID: 2852}
     - Class: 114
-      Script: {instanceID: 3138}
+      Script: {instanceID: 3030}
     - Class: 114
-      Script: {instanceID: 3340}
+      Script: {instanceID: 3146}
     - Class: 114
-      Script: {instanceID: 3680}
+      Script: {instanceID: 3348}
     - Class: 114
-      Script: {instanceID: 3940}
+      Script: {instanceID: 3688}
     - Class: 114
-      Script: {instanceID: 4156}
+      Script: {instanceID: 3948}
     - Class: 114
-      Script: {instanceID: 4516}
+      Script: {instanceID: 4164}
     - Class: 114
-      Script: {instanceID: 4538}
+      Script: {instanceID: 4524}
     - Class: 114
-      Script: {instanceID: 4654}
+      Script: {instanceID: 4546}
     - Class: 114
-      Script: {instanceID: 4824}
+      Script: {instanceID: 4662}
     - Class: 114
-      Script: {instanceID: 4856}
+      Script: {instanceID: 4784}
     - Class: 114
-      Script: {instanceID: 4930}
+      Script: {instanceID: 4834}
     - Class: 114
-      Script: {instanceID: 5042}
+      Script: {instanceID: 4866}
     - Class: 114
-      Script: {instanceID: 5048}
+      Script: {instanceID: 4940}
     - Class: 114
-      Script: {instanceID: 5202}
+      Script: {instanceID: 5052}
     - Class: 114
-      Script: {instanceID: 19116}
+      Script: {instanceID: 5058}
     - Class: 114
-      Script: {instanceID: 30128}
+      Script: {instanceID: 5212}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -341,6 +341,12 @@ ScriptsOnlyBuild:
     className: MultiSceneNetManager
   - hash:
       serializedVersion: 2
+      Hash: 2bc47da5973c9a20f96189a3910d9ff4
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SpawnPointSH
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -377,7 +383,7 @@ ScriptsOnlyBuild:
     className: PlaymodeTestsController
   - hash:
       serializedVersion: 2
-      Hash: c91c24b7d3b6b2991572f426b51baff3
+      Hash: 59ca03cd9b39df20a3ae7ff602c10964
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UnitSelection
@@ -1019,6 +1025,12 @@ ScriptsOnlyBuild:
     className: TMP_Settings
   - hash:
       serializedVersion: 2
+      Hash: de42ef45713c7de09fea0099007ba8fe
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: PlayerManager
+  - hash:
+      serializedVersion: 2
       Hash: 8cdea17d73c5ce2ae9439765414474ef
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1257,19 +1269,7 @@ ScriptsOnlyBuild:
     assemblyName: Mirror.Examples.dll
     namespaceName: Mirror.Examples.NetworkRoom
     className: NetworkRoomPlayerExt
-  - hash:
-      serializedVersion: 2
-      Hash: de42ef45713c7de09fea0099007ba8fe
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: PlayerManager
-  - hash:
-      serializedVersion: 2
-      Hash: 2bc47da5973c9a20f96189a3910d9ff4
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: SpawnPointSH
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: D:/Unity project/PTG_project_unity_3D/Builds/FortecaV_3/PTG_project_unity_3D.exe
+  playerPath: D:/Unity project/PTG_project_unity_3D/Builds/ZaznaczanieV_2/PTG_project_unity_3D.exe
