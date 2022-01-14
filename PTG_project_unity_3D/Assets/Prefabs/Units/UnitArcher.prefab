@@ -249,10 +249,12 @@ MonoBehaviour:
   _hp: 0
   _dmg: 0
   _trainingSpeed: 0
-  UnitInRange: []
+  _attackSpeed: 0
+  _trainingCost: 0
+  _radiusSqrt: 0
+  _unitInRange: []
   _unitTransform: {fileID: 1966352509800256322}
   _attackRange: {fileID: 4577397527130060402}
-  _radiusSqrt: 0
 --- !u!1001 &957850702133615530
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -266,7 +268,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4262067422165927322, guid: 7eeb7f7127c0ca341956b6b81203d3fa, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8674809220942028876, guid: 7eeb7f7127c0ca341956b6b81203d3fa, type: 3}
       propertyPath: m_RootOrder

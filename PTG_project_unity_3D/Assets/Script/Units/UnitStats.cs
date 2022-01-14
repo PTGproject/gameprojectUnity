@@ -11,11 +11,15 @@ public class UnitStats : NetworkBehaviour
     [SerializeField] [SyncVar] private float _hp;
     [SerializeField] [SyncVar] private float _dmg;
     [SerializeField] [SyncVar] private float _trainingSpeed;
-    [SerializeField] public List<Unit> _unitInRange = new List<Unit>();
+    [SerializeField] [SyncVar] private float _attackSpeed;
+    [SerializeField] [SyncVar] private float _trainingCost;
+    [SerializeField] private double _radiusSqrt;
+    [SerializeField] [SyncVar] private List<Unit> _unitInRange = new List<Unit>();
     [SerializeField] private Transform _unitTransform = null;
     [SerializeField] private CircleCollider2D _attackRange = null;
+    private Coroutine _trainingCoroutine;
 
-    [SerializeField] private double _radiusSqrt;
+    
     public float HP
     {
         get
@@ -49,6 +53,28 @@ public class UnitStats : NetworkBehaviour
             _trainingSpeed = value;
         }
     }
+    public float TrainingCost
+    {
+        get
+        {
+            return _trainingCost;
+        }
+        set
+        {
+            _trainingCost = value;
+        }
+    }
+    public float AttakcSpeed
+    {
+        get
+        {
+            return _attackSpeed;
+        }
+        set
+        {
+            _attackSpeed = value;
+        }
+    } 
 
     public void UnitInit(string unitName)
     {
@@ -58,50 +84,68 @@ public class UnitStats : NetworkBehaviour
                 Dmg = 1;
                 HP = 10;
                 TrainingSpeed = 2;
-                _radiusSqrt = Math.Pow(_attackRange.radius * _attackRange.transform.localScale.x * _unitTransform.localScale.x, 2);
+                AttakcSpeed = 1;
+                TrainingCost = 100;
                 break;
             case "UnitArcher(Clone)":
+                AttakcSpeed = 2;
                 Dmg = 2;
                 HP = 5;
                 TrainingSpeed = 4;
-                _radiusSqrt = Math.Pow(_attackRange.radius * _attackRange.transform.localScale.x * _unitTransform.localScale.x, 2);
+                TrainingCost = 200;
                 break;
         }
-    }
-
-    public void Start()
-    {
-        UnitInit(gameObject.name);
-
     }
 
     private void AddUnitInRange()
     {
-
         var units = FindObjectsOfType(typeof(Unit));
-        foreach (Unit unit in units)
+        if (hasAuthority)
         {
-            if (unit.hasAuthority)
+           
+            foreach (Unit unit in units)
             {
-                continue;
-            }
-            if (!(Math.Pow(unit.transform.position.x - _unitTransform.position.x, 2) +
-                  Math.Pow(unit.transform.position.z - _unitTransform.position.z, 2) <
-                  _radiusSqrt))
-            {
-                continue;
-            }
 
-            if (_unitInRange.Find(x => x.netId == unit.netId) == null)
-            {
-                _unitInRange.Add(unit);
+                if (unit.hasAuthority)
+                {
+                    continue;
+                }
+                if (!(Math.Pow(unit.transform.position.x - _unitTransform.position.x, 2) +
+                      Math.Pow(unit.transform.position.z - _unitTransform.position.z, 2) <
+                      _radiusSqrt))
+                {
+                    continue;
+                }
+                if (_unitInRange.Find(x => x.netId == unit.netId) == null)
+                {
+                    _unitInRange.Add(unit);
+                }
             }
-
-
         }
-    }
+        else
+        {
+            foreach (Unit unit in units)
+            {
 
-    void RemoveUnit()
+                if (!unit.hasAuthority)
+                {
+                    continue;
+                }
+                if (!(Math.Pow(unit.transform.position.x - _unitTransform.position.x, 2) +
+                      Math.Pow(unit.transform.position.z - _unitTransform.position.z, 2) <
+                      _radiusSqrt))
+                {
+                    continue;
+                }
+                if (_unitInRange.Find(x => x.netId == unit.netId) == null)
+                {
+                    _unitInRange.Add(unit);
+                }
+            }
+        }
+
+    }
+    public void RemoveUnit()
     {
         var tempUnits = new List<Unit>();
         _unitInRange.CopyTo(tempUnits);
@@ -116,63 +160,7 @@ public class UnitStats : NetworkBehaviour
         }
     }
 
-
-
-    #region Server
-    [Command]
-    public void CmdDestroyUnit()
-    {
-        DestroyUnit();
-    }
-
-    [Command]
-    public void CmdAttack()
-    {
-        Attack();
-    }
-    #endregion
-
-    #region Client
-    public void Update()
-    {
-        if (hasAuthority)
-        {
-            AddUnitInRange();
-        }
-        if(isServer)
-        {
-            RpcAttack();
-            RpcDestroyUnit();
-        }
-
-        if (isClient)
-        {
-            CmdAttack();
-            CmdDestroyUnit();
-        }
-
-        RemoveUnit();
-    }
-
-    [ClientRpc]
-    void RpcDestroyUnit()
-    {
-        DestroyUnit();
-    }
-
-    void DestroyUnit()
-    {
-        /*if (HP <= 0)
-        {
-            Destroy(gameObject);
-        }*/
-    }
-    [ClientRpc]
-    void RpcAttack()
-    {
-        Attack();
-    }
-    void Attack()
+    public void Attack()
     {
         if (_unitInRange.Count == 0)
         {
@@ -180,7 +168,58 @@ public class UnitStats : NetworkBehaviour
         }
 
         var unitToDamage = _unitInRange.First();
-        unitToDamage.GetComponent<UnitStats>().HP = -1;
+        unitToDamage.GetComponent<UnitStats>().TakeDmg(Dmg);
     }
-    #endregion
+    public void TakeDmg(float dmg)
+    {
+        HP -= dmg;
+    }
+    [Command]
+    public void CmdDestroyUnit()
+    {
+        Destroy(gameObject);
+        RpcDestroyUnit();
+    }
+
+    [ClientRpc]
+    public void RpcDestroyUnit()
+    {
+        Destroy(gameObject);
+    }
+
+    public void UpdateList()
+    {
+        _unitInRange = _unitInRange.Where(x=>x != null).ToList();
+    }
+    IEnumerator AttackRoutine()
+    {
+        while (_unitInRange.Count!=0)
+        {
+            Attack();
+            yield return new WaitForSeconds(AttakcSpeed);
+        }
+        _trainingCoroutine = null;
+    }
+    public void Start()
+    {
+        UnitInit(gameObject.name);
+        _radiusSqrt = Math.Pow(_attackRange.radius * _attackRange.transform.localScale.x * _unitTransform.localScale.x, 2);
+    }
+    public void Update()
+    {
+        UpdateList();
+        AddUnitInRange();
+        _trainingCoroutine ??= StartCoroutine(AttackRoutine());
+        if (isClient)
+        {
+            if (HP <= 0)
+            {
+                CmdDestroyUnit();
+            }
+        }
+        RemoveUnit();
+        
+    }
+
+   
 }

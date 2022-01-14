@@ -62,6 +62,7 @@ public class UnitSpawner : NetworkBehaviour, IPointerClickHandler
     {
         return queue[place];
     }
+
     #endregion
 
     #region Client

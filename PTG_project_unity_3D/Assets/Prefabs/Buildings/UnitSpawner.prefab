@@ -551,6 +551,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e87a7025dd731554eaef55ef4bfd7d39, type: 3}
   _sliderBar: {fileID: 266630275819809721}
   _sliderBarText: {fileID: 7783496063197761540}
+  _unitStats:
+  - {fileID: 2052705403221049671, guid: f568771b674c68247885de0d0de6cfd5, type: 3}
+  - {fileID: -5356981768869410914, guid: 49134ae5827caa340b97692f644a2393, type: 3}
 --- !u!1 &5436091262545060614
 GameObject:
   m_ObjectHideFlags: 0

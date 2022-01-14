@@ -844,7 +844,7 @@ ScriptsOnlyBuild:
     className: SceneInterestManagement
   - hash:
       serializedVersion: 2
-      Hash: 6a5f71e8326c043cc53b1d53b775ea8d
+      Hash: 5c759926fae195fd893698b30f6eba88
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UnitStats
@@ -1048,7 +1048,7 @@ ScriptsOnlyBuild:
     className: PlayerManager
   - hash:
       serializedVersion: 2
-      Hash: 8cdea17d73c5ce2ae9439765414474ef
+      Hash: af8906f6cec77f6c6f92ea0c41a4bb37
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UnitType

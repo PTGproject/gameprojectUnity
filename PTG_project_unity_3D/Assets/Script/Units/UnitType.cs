@@ -14,6 +14,7 @@ public class UnitType : MonoBehaviour
     [SerializeField] private List<Sprite> _spritesList = null;
     [SerializeField] private Slider _sliderBar = null;
     [SerializeField] private Text _sliderBarText = null;
+    [SerializeField] private List<UnitStats> _unitStats = new List<UnitStats>();
     // [SerializeField] private Text time = null;
     private float _unitTrainingPercent =0;
     private Coroutine _trainingCoroutine;
@@ -32,7 +33,11 @@ public class UnitType : MonoBehaviour
     #region Client
     private void Start()
     {
-       
+        foreach (var unitStatse in _unitStats)
+        {
+            unitStatse.UnitInit(unitStatse.gameObject.name +"(Clone)");
+
+        }
     }
 
     private void Update()
@@ -52,7 +57,7 @@ public class UnitType : MonoBehaviour
         if (_unitSpawner.IsQueued())
         {
             _timeMil += Time.deltaTime;
-            _unitTrainingPercent = _timeMil / (_unitSpawner.GetFirst() *2 + 2);
+            _unitTrainingPercent = _timeMil / (_unitStats[_unitSpawner.GetFirst()].TrainingSpeed);
             _sliderBar.value = _unitTrainingPercent;
             _sliderBarText.text = Math.Round(_unitTrainingPercent * 100) + "%";
             _sliderBar.gameObject.SetActive(true);
@@ -82,7 +87,7 @@ public class UnitType : MonoBehaviour
                 break;
         }
         var player  = NetworkClient.localPlayer.gameObject.GetComponent<PlayerManager>();
-        if (player.Gold - (_uType * 100 + 100) < 0)
+        if (player.Gold - (_unitStats[_uType].TrainingCost) < 0)
         {
             Debug.Log("Nie staæ Cie biedaku");
             return;
@@ -93,7 +98,7 @@ public class UnitType : MonoBehaviour
             return;
         }
 
-        player.Gold -= (_uType * 100 + 100);
+        player.Gold -= (_unitStats[_uType].TrainingCost);
         _unitSpawner.AddToQueue(_uType);
         _trainingCoroutine ??= StartCoroutine(TrainingUnit());
 
@@ -106,7 +111,7 @@ public class UnitType : MonoBehaviour
         while (_unitSpawner.IsQueued())
         {
 
-            yield return new WaitForSeconds(_unitSpawner.GetFirst() * 2f + 2f);
+            yield return new WaitForSeconds(_unitStats[_unitSpawner.GetFirst()].TrainingSpeed);
             if (_unitSpawner.IsQueued())
             {
                 _unitSpawner.CmdUnitType(_unitSpawner.GetFirst());
