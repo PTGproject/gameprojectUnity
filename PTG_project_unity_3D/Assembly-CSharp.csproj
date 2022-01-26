@@ -66,22 +66,29 @@
     <Compile Include="Assets\Script\Units\UnitType.cs" />
     <Compile Include="Assets\Script\Units\UnitCommandManager.cs" />
     <Compile Include="Assets\Script\Units\UnitMovement.cs" />
+    <Compile Include="Assets\3DModels\Polytope Studio\Lowpoly Medieval Characters\Sources\Scripts\PT_Create_Prefab.cs" />
+    <Compile Include="Assets\Script\CameraMoving.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.dll" />
     <None Include="Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.Mdb.dll" />
     <None Include="Assets\ScriptTemplates\51-Mirror__Network Authenticator-NewNetworkAuthenticator.cs.txt" />
+    <None Include="Assets\3DModels\Polytope Studio\Lowpoly Medieval Characters\Sources\Modular_NPC\Shaders\PT_Medieval_Modular_NPC_Shader_Toon.shader" />
     <None Include="Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.Pdb.dll" />
     <None Include="Assets\ScriptTemplates\56-Mirror__Network Discovery-NewNetworkDiscovery.cs.txt" />
     <None Include="Assets\Mirror\Plugins\Mono.Cecil\Mono.CecilX.Rocks.dll" />
     <None Include="Assets\Mirror\Version.txt" />
     <None Include="Assets\Mirror\Readme.txt" />
+    <None Include="Assets\3DModels\low poly medieval buildings\readme.txt" />
+    <None Include="Assets\3DModels\Animated_archer\motiondata.xml" />
     <None Include="Assets\ScriptTemplates\52-Mirror__Network Behaviour-NewNetworkBehaviour.cs.txt" />
     <None Include="Assets\Mirror\Notice.txt" />
+    <None Include="Assets\3DModels\Animated_archer\archer_notes.txt" />
     <None Include="Assets\Mirror\Plugins\Mono.Cecil\License.txt" />
     <None Include="Assets\ScriptTemplates\55-Mirror__Network Room Player-NewNetworkRoomPlayer.cs.txt" />
     <None Include="Assets\ScriptTemplates\50-Mirror__Network Manager-NewNetworkManager.cs.txt" />
     <None Include="Assets\ScriptTemplates\54-Mirror__Network Room Manager-NewNetworkRoomManager.cs.txt" />
+    <None Include="Assets\3DModels\Polytope Studio\Lowpoly Medieval Characters\Sources\Modular_NPC\Shaders\PT_Medieval_Modular_NPC_Shader_PBR.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

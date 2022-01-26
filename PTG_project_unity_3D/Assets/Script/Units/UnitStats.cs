@@ -19,6 +19,7 @@ public class UnitStats : NetworkBehaviour
     [SerializeField] [SyncVar] private List<Unit> _unitInRange = new List<Unit>();
     [SerializeField] private Transform _unitTransform = null;
     [SerializeField] private CircleCollider2D _attackRange = null;
+    [SerializeField] public Canvas healthCanvas = null;
     private Coroutine _trainingCoroutine;
     public bool isBuilding = false;
 

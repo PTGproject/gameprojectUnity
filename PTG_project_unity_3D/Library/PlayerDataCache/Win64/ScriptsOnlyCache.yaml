@@ -2,6 +2,7 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - Bilboard
+    - CameraMoving
     - HealthBar
     - MyNetworkManager
     - PlayerManager
@@ -79,68 +80,74 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
+    - Class: 90
+      Script: {instanceID: 0}
+    - Class: 95
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1452}
+      Script: {instanceID: 1462}
     - Class: 114
-      Script: {instanceID: 1454}
-    - Class: 114
-      Script: {instanceID: 1456}
+      Script: {instanceID: 1464}
     - Class: 114
       Script: {instanceID: 1466}
     - Class: 114
-      Script: {instanceID: 1764}
+      Script: {instanceID: 1478}
     - Class: 114
-      Script: {instanceID: 2100}
+      Script: {instanceID: 1776}
     - Class: 114
-      Script: {instanceID: 2132}
+      Script: {instanceID: 2112}
     - Class: 114
-      Script: {instanceID: 2216}
+      Script: {instanceID: 2144}
     - Class: 114
-      Script: {instanceID: 2284}
+      Script: {instanceID: 2228}
     - Class: 114
-      Script: {instanceID: 2612}
+      Script: {instanceID: 2296}
     - Class: 114
-      Script: {instanceID: 2766}
+      Script: {instanceID: 2624}
     - Class: 114
-      Script: {instanceID: 2854}
+      Script: {instanceID: 2778}
     - Class: 114
-      Script: {instanceID: 3032}
+      Script: {instanceID: 2866}
     - Class: 114
-      Script: {instanceID: 3148}
+      Script: {instanceID: 3046}
     - Class: 114
-      Script: {instanceID: 3350}
+      Script: {instanceID: 3070}
     - Class: 114
-      Script: {instanceID: 3692}
+      Script: {instanceID: 3164}
     - Class: 114
-      Script: {instanceID: 3952}
+      Script: {instanceID: 3366}
     - Class: 114
-      Script: {instanceID: 4074}
+      Script: {instanceID: 3706}
     - Class: 114
-      Script: {instanceID: 4170}
+      Script: {instanceID: 3966}
     - Class: 114
-      Script: {instanceID: 4530}
+      Script: {instanceID: 4088}
     - Class: 114
-      Script: {instanceID: 4552}
+      Script: {instanceID: 4184}
     - Class: 114
-      Script: {instanceID: 4668}
+      Script: {instanceID: 4544}
     - Class: 114
-      Script: {instanceID: 4790}
+      Script: {instanceID: 4566}
     - Class: 114
-      Script: {instanceID: 4840}
+      Script: {instanceID: 4682}
     - Class: 114
-      Script: {instanceID: 4872}
+      Script: {instanceID: 4806}
     - Class: 114
-      Script: {instanceID: 4946}
+      Script: {instanceID: 4856}
     - Class: 114
-      Script: {instanceID: 5058}
+      Script: {instanceID: 4888}
     - Class: 114
-      Script: {instanceID: 5064}
+      Script: {instanceID: 4962}
     - Class: 114
-      Script: {instanceID: 5218}
+      Script: {instanceID: 5074}
+    - Class: 114
+      Script: {instanceID: 5080}
+    - Class: 114
+      Script: {instanceID: 5234}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -148,6 +155,12 @@ ScriptsOnlyBuild:
     - Class: 135
       Script: {instanceID: 0}
     - Class: 136
+      Script: {instanceID: 0}
+    - Class: 137
+      Script: {instanceID: 0}
+    - Class: 154
+      Script: {instanceID: 0}
+    - Class: 156
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -159,6 +172,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
+    - Class: 218
+      Script: {instanceID: 0}
     - Class: 222
       Script: {instanceID: 0}
     - Class: 223
@@ -166,6 +181,8 @@ ScriptsOnlyBuild:
     - Class: 224
       Script: {instanceID: 0}
     - Class: 238
+      Script: {instanceID: 0}
+    - Class: 1953259897
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -548,6 +565,12 @@ ScriptsOnlyBuild:
     className: NetworkLerpRigidbody
   - hash:
       serializedVersion: 2
+      Hash: a059adf3604cb1857adabaedad639964
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: Polytope
+    className: PT_Create_Prefab
+  - hash:
+      serializedVersion: 2
       Hash: 051520dae738041bd35e209bbe5954b6
     assemblyName: Mirror.Components.dll
     namespaceName: Mirror
@@ -576,6 +599,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_SpriteAnimator
+  - hash:
+      serializedVersion: 2
+      Hash: 847126973f25cc9175139da19b9ee20c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: CameraMoving
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -860,7 +889,7 @@ ScriptsOnlyBuild:
     className: SceneInterestManagement
   - hash:
       serializedVersion: 2
-      Hash: 639e4bc36e8ee020f1fa734536e6b941
+      Hash: b3df191db69c86e6f8019061908d1563
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: UnitStats

@@ -59,6 +59,8 @@ void Update()
     {
         if (unit.hasAuthority && unit.GetComponent<UnitStats>().isBuilding == false)
             NumberOfUnits++;
+        if (isLocalPlayer)
+            unit.GetComponent<UnitStats>().healthCanvas.gameObject.SetActive(true);
     }
 
     _numberOfUnitsText.text = $"Units: {NumberOfUnits}";
