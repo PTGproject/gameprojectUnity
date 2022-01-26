@@ -1,0 +1,2 @@
+D:\Unity project\PTG_project_unity_3D\obj\Debug\Unity.Mirror.CodeGen.csproj.AssemblyReference.cache
+D:\Unity project\PTG_project_unity_3D\obj\Debug\Unity.Mirror.CodeGen.csproj.CoreCompileInputs.cache
