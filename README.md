@@ -1,5 +1,5 @@
 # gameprojectUnity
-Maksymilian Średniawa
-Maciej Mendel
-Karolina Pierlak
-Patryk Graca
+# Maksymilian Średniawa
+# Maciej Mendel
+# Karolina Pierlak
+# Patryk Graca
