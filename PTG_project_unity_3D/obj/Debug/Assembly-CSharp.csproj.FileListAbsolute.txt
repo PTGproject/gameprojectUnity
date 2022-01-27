@@ -1,0 +1,2 @@
+D:\Unity project\PTG_project_unity_3D\obj\Debug\Assembly-CSharp.csproj.AssemblyReference.cache
+D:\Unity project\PTG_project_unity_3D\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
