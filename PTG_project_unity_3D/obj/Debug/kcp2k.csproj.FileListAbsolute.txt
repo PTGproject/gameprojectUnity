@@ -1,2 +1,0 @@
-D:\Unity project\PTG_project_unity_3D\obj\Debug\kcp2k.csproj.AssemblyReference.cache
-D:\Unity project\PTG_project_unity_3D\obj\Debug\kcp2k.csproj.CoreCompileInputs.cache

@@ -1,2 +1,0 @@
-D:\Unity project\PTG_project_unity_3D\obj\Debug\SimpleWebTransport.csproj.CoreCompileInputs.cache
-D:\Unity project\PTG_project_unity_3D\obj\Debug\SimpleWebTransport.csproj.AssemblyReference.cache
